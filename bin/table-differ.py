@@ -1,16 +1,17 @@
 import argparse
+from pathlib import Path
 from typing import List, Optional
 
 import pandas as pd
 
 
 def compare_excel(
-    old_file: str,
-    new_file: str,
-    key: str,
-    exclude: List[str],
-    added_xlsx: Optional[str] = None,
-    common_xlsx: Optional[str] = None,
+        old_file: str,
+        new_file: str,
+        key: str,
+        exclude: List[str],
+        added_xlsx: Optional[str] = None,
+        common_xlsx: Optional[str] = None,
 ) -> None:
     old_df = pd.read_excel(old_file)
     new_df = pd.read_excel(new_file)
@@ -54,10 +55,11 @@ def compare_excel(
     print("\n=== Common rows ===")
     print(format_output(common).to_string(index=False))
 
-    # Write XLSX outputs if requested
     if added_xlsx:
+        Path(added_xlsx).parent.mkdir(parents=True, exist_ok=True)
         format_output(added).to_excel(added_xlsx, index=False)
     if common_xlsx:
+        Path(common_xlsx).parent.mkdir(parents=True, exist_ok=True)
         format_output(common).to_excel(common_xlsx, index=False)
 
 

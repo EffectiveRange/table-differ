@@ -7,6 +7,8 @@ from io import StringIO
 from pathlib import Path
 from unittest.mock import patch
 
+import openpyxl
+
 
 def run_command(command: list[str]) -> subprocess.CompletedProcess[str]:
     script_path = command[0]
@@ -65,6 +67,9 @@ class TableDifferCliTest(unittest.TestCase):
         script = repo_root / "bin" / "table-differ.py"
         expected_output_file = repo_root / "tests" / "expected" / "output.txt"
 
+        added_xlsx = repo_root / "tests" / "generated" / "added.xlsx"
+        common_xlsx = repo_root / "tests" / "generated" / "common.xlsx"
+
         command = [
             str(script),
             f"{repo_root}/tests/test_data/pcb-mrcm-v0.5.0-bom.xlsx",
@@ -74,9 +79,9 @@ class TableDifferCliTest(unittest.TestCase):
             "--exclude",
             "supplier_link",
             "--added-xlsx",
-            "added.xlsx",
+            str(added_xlsx),
             "--common-xlsx",
-            "common.xlsx"
+            str(common_xlsx)
         ]
 
         result = run_command(command)
@@ -88,6 +93,29 @@ class TableDifferCliTest(unittest.TestCase):
             normalize_output(result.stdout),
             normalize_output(expected_output),
         )
+
+        def read_xlsx(path):
+            wb = openpyxl.load_workbook(path)
+            ws = wb.active
+            return [[cell.value for cell in row] for row in ws.iter_rows()]
+
+        def sort_xlsx_rows(rows):
+            if not rows:
+                return rows
+            header, data = rows[0], rows[1:]
+            data_sorted = sorted(data)
+            return [header] + data_sorted
+
+        expected_added_xlsx = repo_root / "tests" / "expected" / "added.xlsx"
+        expected_common_xlsx = repo_root / "tests" / "expected" / "common.xlsx"
+
+        expected_added = sort_xlsx_rows(read_xlsx(expected_added_xlsx))
+        expected_common = sort_xlsx_rows(read_xlsx(expected_common_xlsx))
+        actual_added = sort_xlsx_rows(read_xlsx(added_xlsx))
+        actual_common = sort_xlsx_rows(read_xlsx(common_xlsx))
+
+        self.assertEqual(actual_added, expected_added, f"added.xlsx content mismatch: {actual_added}")
+        self.assertEqual(actual_common, expected_common, f"common.xlsx content mismatch: {actual_common}")
 
 
 if __name__ == "__main__":
