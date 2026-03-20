@@ -4,7 +4,14 @@ from typing import List, Optional
 import pandas as pd
 
 
-def compare_excel(old_file: str, new_file: str, key: str, exclude: List[str]) -> None:
+def compare_excel(
+    old_file: str,
+    new_file: str,
+    key: str,
+    exclude: List[str],
+    added_xlsx: Optional[str] = None,
+    common_xlsx: Optional[str] = None,
+) -> None:
     old_df = pd.read_excel(old_file)
     new_df = pd.read_excel(new_file)
 
@@ -47,6 +54,12 @@ def compare_excel(old_file: str, new_file: str, key: str, exclude: List[str]) ->
     print("\n=== Common rows ===")
     print(format_output(common).to_string(index=False))
 
+    # Write XLSX outputs if requested
+    if added_xlsx:
+        format_output(added).to_excel(added_xlsx, index=False)
+    if common_xlsx:
+        format_output(common).to_excel(common_xlsx, index=False)
+
 
 def main(argv: Optional[List[str]] = None) -> None:
     parser = argparse.ArgumentParser()
@@ -59,6 +72,18 @@ def main(argv: Optional[List[str]] = None) -> None:
         default=[],
         help="Columns to exclude from comparison/output"
     )
+    parser.add_argument(
+        "--added-xlsx",
+        type=str,
+        default=None,
+        help="Path to write the added rows as an Excel file"
+    )
+    parser.add_argument(
+        "--common-xlsx",
+        type=str,
+        default=None,
+        help="Path to write the common rows as an Excel file"
+    )
 
     args = parser.parse_args(argv)
 
@@ -66,7 +91,9 @@ def main(argv: Optional[List[str]] = None) -> None:
         args.old_file,
         args.new_file,
         args.key,
-        args.exclude
+        args.exclude,
+        args.added_xlsx,
+        args.common_xlsx,
     )
 
 

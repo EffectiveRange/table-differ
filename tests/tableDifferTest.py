@@ -73,6 +73,10 @@ class TableDifferCliTest(unittest.TestCase):
             "mpn",
             "--exclude",
             "supplier_link",
+            "--added-xlsx",
+            "added.xlsx",
+            "--common-xlsx",
+            "common.xlsx"
         ]
 
         result = run_command(command)

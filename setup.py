@@ -6,7 +6,6 @@ setup(
     long_description='Excel table difference generator tool',
     author='Ferenc Nandor Janky & Attila Gombos',
     author_email='info@effective-range.com',
-    packages=['bin'],
     scripts=['bin/table-differ.py'],
     use_scm_version=True,
     setup_requires=["setuptools_scm"],
