@@ -11,6 +11,7 @@ def compare_excel(
         key: str,
         exclude: List[str],
         added_xlsx: Optional[str] = None,
+        removed_xlsx: Optional[str] = None,
         common_xlsx: Optional[str] = None,
 ) -> None:
     old_df = pd.read_excel(old_file)
@@ -58,6 +59,9 @@ def compare_excel(
     if added_xlsx:
         Path(added_xlsx).parent.mkdir(parents=True, exist_ok=True)
         format_output(added).to_excel(added_xlsx, index=False)
+    if removed_xlsx:
+        Path(removed_xlsx).parent.mkdir(parents=True, exist_ok=True)
+        format_output(removed).to_excel(removed_xlsx, index=False)
     if common_xlsx:
         Path(common_xlsx).parent.mkdir(parents=True, exist_ok=True)
         format_output(common).to_excel(common_xlsx, index=False)
@@ -81,6 +85,12 @@ def main(argv: Optional[List[str]] = None) -> None:
         help="Path to write the added rows as an Excel file"
     )
     parser.add_argument(
+        "--removed-xlsx",
+        type=str,
+        default=None,
+        help="Path to write the removed rows as an Excel file"
+    )
+    parser.add_argument(
         "--common-xlsx",
         type=str,
         default=None,
@@ -95,6 +105,7 @@ def main(argv: Optional[List[str]] = None) -> None:
         args.key,
         args.exclude,
         args.added_xlsx,
+        args.removed_xlsx,
         args.common_xlsx,
     )
 

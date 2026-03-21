@@ -68,6 +68,7 @@ class TableDifferCliTest(unittest.TestCase):
         expected_output_file = repo_root / "tests" / "expected" / "output.txt"
 
         added_xlsx = repo_root / "tests" / "generated" / "added.xlsx"
+        removed_xlsx = repo_root / "tests" / "generated" / "removed.xlsx"
         common_xlsx = repo_root / "tests" / "generated" / "common.xlsx"
 
         command = [
@@ -80,6 +81,8 @@ class TableDifferCliTest(unittest.TestCase):
             "supplier_link",
             "--added-xlsx",
             str(added_xlsx),
+            "--removed-xlsx",
+            str(removed_xlsx),
             "--common-xlsx",
             str(common_xlsx)
         ]
@@ -107,14 +110,18 @@ class TableDifferCliTest(unittest.TestCase):
             return [header] + data_sorted
 
         expected_added_xlsx = repo_root / "tests" / "expected" / "added.xlsx"
+        expected_removed_xlsx = repo_root / "tests" / "expected" / "removed.xlsx"
         expected_common_xlsx = repo_root / "tests" / "expected" / "common.xlsx"
 
         expected_added = sort_xlsx_rows(read_xlsx(expected_added_xlsx))
+        expected_removed = sort_xlsx_rows(read_xlsx(expected_removed_xlsx))
         expected_common = sort_xlsx_rows(read_xlsx(expected_common_xlsx))
         actual_added = sort_xlsx_rows(read_xlsx(added_xlsx))
+        actual_removed = sort_xlsx_rows(read_xlsx(removed_xlsx))
         actual_common = sort_xlsx_rows(read_xlsx(common_xlsx))
 
         self.assertEqual(actual_added, expected_added, f"added.xlsx content mismatch: {actual_added}")
+        self.assertEqual(actual_removed, expected_removed, f"removed.xlsx content mismatch: {actual_removed}")
         self.assertEqual(actual_common, expected_common, f"common.xlsx content mismatch: {actual_common}")
 
 
