@@ -124,6 +124,45 @@ class TableDifferCliTest(unittest.TestCase):
         self.assertEqual(actual_removed, expected_removed, f"removed.xlsx content mismatch: {actual_removed}")
         self.assertEqual(actual_common, expected_common, f"common.xlsx content mismatch: {actual_common}")
 
+    def test_key_column_missing(self):
+        repo_root = Path(__file__).resolve().parent.parent
+        script = repo_root / "bin" / "table-differ.py"
+        file1 = repo_root / "tests" / "test_data" / "pcb-mrcm-v0.5.0-bom.xlsx"
+        file2 = repo_root / "tests" / "test_data" / "pcb-mrcm-v1.0.4-bom.xlsx"
+        missing_key = "not_a_column"
+        command = [
+            str(script),
+            str(file1),
+            str(file2),
+            "--key",
+            missing_key
+        ]
+        with self.assertRaisesRegex(Exception, f"Key column '{missing_key}' not found in both files"):
+            run_command(command)
+
+    def test_key_column_missing_in_one_file(self):
+        import tempfile
+        import pandas as pd
+        repo_root = Path(__file__).resolve().parent.parent
+        script = repo_root / "bin" / "table-differ.py"
+        # Create two temp files, one missing the key column
+        with tempfile.TemporaryDirectory() as tmpdir:
+            file1 = Path(tmpdir) / "file1.xlsx"
+            file2 = Path(tmpdir) / "file2.xlsx"
+            # file1 has 'key', file2 does not
+            pd.DataFrame({"key": [1, 2], "val": [3, 4]}).to_excel(file1, index=False)
+            pd.DataFrame({"other": [1, 2], "val": [3, 4]}).to_excel(file2, index=False)
+            command = [
+                str(script),
+                str(file1),
+                str(file2),
+                "--key",
+                "key"
+            ]
+            with self.assertRaisesRegex(Exception, "Key column 'key' not found in both files"):
+                run_command(command)
+    
+
 
 if __name__ == "__main__":
     unittest.main()
