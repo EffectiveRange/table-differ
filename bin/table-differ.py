@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+
+# SPDX-FileCopyrightText: 2024 Ferenc Nandor Janky <ferenj@effective-range.com>
+# SPDX-FileCopyrightText: 2024 Attila Gombos <attila.gombos@effective-range.com>
+# SPDX-License-Identifier: MIT
+
 import argparse
 from pathlib import Path
 from typing import List, Optional
@@ -69,9 +75,9 @@ def compare_excel(
 
 def main(argv: Optional[List[str]] = None) -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("old_file")
-    parser.add_argument("new_file")
-    parser.add_argument("--key", required=True)
+    parser.add_argument("old_file", type=str, help="Path to old file")
+    parser.add_argument("new_file", type=str, help="Path to new file")
+    parser.add_argument("--key", required=True, help="Key column name")
     parser.add_argument(
         "--exclude",
         nargs="*",
