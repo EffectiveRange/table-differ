@@ -1,0 +1,74 @@
+
+=== Removed rows ===
+        refdes  qty              value                mpn                     manufacturer
+          U503    1 MIC2876-5.25YMT-TR MIC2876-5.25YMT-TR             Microchip Technology
+            D7    1         TS4148 RCG         TS4148 RCG Taiwan Semiconductor Corporation
+U5,U2,U4,U1,U3    5          74LVC1G07    SN74LVC1G07DPWR                              NaN
+          D602    1            PWR_ESD       PESD0603-240                  Littelfuse Inc.
+         FB601    1        FerriteBead     BLE32PN260SH1L               Murata Electronics
+          J101    1              VIN_2       691137710002                              NaN
+         J2,J4    2              JMPRS      54202-T0804LF                              NaN
+
+=== Added rows ===
+             refdes  qty             value                  mpn                    manufacturer
+               C522    1              39nF    CC0402JRX7R9BB393              Murata Electronics
+               C210    1             200nF  C1005X7R1E224K050BB                             NaN
+               U704    1       TMUX121NKGR          TMUX121NKGR                             NaN
+               J102    1             VIN_2          1-2834011-2                             NaN
+               U901    1            MC3416               MC3416                             NaN
+     R601,R602,R603    3                 0         ERJ-2GE0R00X Panasonic Electronic Components
+C514,C518,C519,C520    4              47uF   GRM21BR61A476ME15L              Murata Electronics
+               U203    1   MCP3425A0T-E/CH      MCP3425A0T-E/CH                             NaN
+               R511    1              365k        ERJ-2RKF3653X Panasonic Electronic Components
+               U802    1      TPS22919DCKR         TPS22919DCKR                             NaN
+          J803,J804    2        Conn_01x03           0533980371                             NaN
+               U503    1      TPS61288RQQR         TPS61288RQQR                             NaN
+     D801,D802,D804    3 D_Schottky_Filled CFSH05-20L TR PBFREE                             NaN
+               C521    1             100pF   C0402C101J5RACAUTO              Murata Electronics
+               R510    1             48.7k        ERA-2AEB4872X Panasonic Electronic Components
+               L502    1          1.0001uH     HPAL1V0630-1R0-R              Murata Electronics
+          U601,U801    2   74LVC3G07GS_115      SN74LVC3G07DCUR                             NaN
+               R513    1             49.9k        ERJ-2RKF4992X Panasonic Electronic Components
+               C517    1             2.2uF   GRM155Z71A225KE44D              Murata Electronics
+
+=== Common rows ===
+                                                                                                                                          refdes  qty              value                 mpn                                      manufacturer
+                                                                                                                                            L501    1                1uH DFE322520FD-1R0M=P2                                Murata Electronics
+                                                                                                                                       Module301    1 ComputeModule5-CM5  10164227-1001A1RLF                                               NaN
+                                                                                                                                  R604,R605,R610    3                5k1        ERA-2AEB512X                   Panasonic Electronic Components
+                                                                                                                                  Q201,Q801,Q802    3         Q_PMOS_GSD             GSF3407                                               NaN
+                                                                                                                                            J501    1           BATT_CON           533750310                                             Molex
+                                                                                                                                            L201    1              2.2uH  IHLP1210BZEZ2R2M5A                                Murata Electronics
+                                                                                                                                            D201    1            D_Zener          BZX884B5V1                                               NaN
+                                                                                                                        R202,R205,R301,R302,R401    5            2.2K 1%        ERA-2AED222X                                               NaN
+                                                                                                                                            U703    1        PIC18F16Q20   PIC18F16Q20-I/REB                              Microchip Technology
+                                                                                                                                       C203,C204    2               10uF     CL31B106KBHNNNE                        Cal-Chip Electronics, Inc.
+                                                                                                                                            U702    1  SN74CBTLV3257RSVR   SN74CBTLV3257RSVR                                 Texas Instruments
+                                                                                                                   R503,R504,R701,R704,R707,R708    6                 1M       ERJ-2RKF1004X                   Panasonic Electronic Components
+                                                                                                                        C221,C703,C706,C707,C902    5                1nF  GCM155R72A102KA37D                                Murata Electronics
+                                                                                                                                       R209,R505    2                887       ERJ-2RKF8870X                                               NaN
+                                                                                                                                            U201    1    LM63635DQDRRRQ1     LM63635DQDRRRQ1                                               NaN
+                                                                                                                             J401,J402,J801,J802    4  Conn_01x22_Female  FH12-22S-0.5SH(55)                                               NaN
+                                                                                                                                            U202    1        TPS2121RUXR         TPS2121RUXR                                               NaN
+                                                                                                                                       C217,C218    2              100uF  GRM21BR60J107ME15L                                               NaN
+                                                                                                                                            U602    1            FT230XQ           FT230XQ-T FTDI, Future Technology Devices International Ltd
+                                                                                                                                  R807,R808,R809    3                 62       ERJ-2RKF62R0X                   Panasonic Electronic Components
+                                                                                                                                            J101    1          VIN_2_ALT           533750210                                               NaN
+                R201,R203,R204,R206,R208,R210,R501,R502,R506,R507,R512,R609,R14,R702,R703,R705,R706,R709,R801,R802,R803,R804,R806,R811,R812,R817   26                10k       ERJ-2RKF1002X                   Panasonic Electronic Components
+                                                                                                                                           BT301    1       Battery_Cell                3000                                               NaN
+                                                                                                                                            U501    1            BQ25622         BQ25622RYKR                                 Texas Instruments
+                                                                                                                                       C604,C605    2               56pF  GRT1555C1H560JA02J                                Murata Electronics
+C201,C202,C205,C206,C212,C215,C216,C219,C502,C505,C507,C513,C516,C601,C606,C609,C610,C612,C701,C702,C704,C708,C709,C710,C801,C803,C804,C805,C901   29              100nF  GRM155R71E104KE14J                                               NaN
+                                                                                                                                       D602,D603    2                ESD          ESDUD05BFX                               WeEn Semiconductors
+                                                                                                                                            R207    1                33k        ERA-2AEB333X                   Panasonic Electronic Components
+                                                                                                                                            U502    1    NCP164CSN330T1G     NCP164CSN330T1G                                               NaN
+                                                                                                                                       U701,U803    2          GSF7002DW           GSF7002DW                            Good-Ark Semiconductor
+                                                                                                                                           SW801    1                  ~         228HDSARBFR                                               NaN
+                                                                                                                                       R606,R607    2                 33       ERJ-2RKF33R0X                   Panasonic Electronic Components
+                                                                                                                                            R508    1                5k3     RT0402DRE075K3L                   Panasonic Electronic Components
+                                                                                     C208,C209,C213,C214,C501,C503,C504,C506,C509,C510,C511,C802   12               22uF  GRM21BR61E226ME44K                                               NaN
+                                                                                                    C207,C220,C508,C512,C515,C607,C608,C611,C705    9              4.7uF  GRM188R6YA475KE15D                                Murata Electronics
+                                                                                                                                       P101,P102    2      USB4105GFA120    USB4105-GF-A-120                                               NaN
+                                                                                                                   R805,R810,R813,R814,R815,R816    6                 1k       ERJ-2RKF1001X                                               NaN
+                                                                                                                                            R509    1               30k1       ERA-2AEB3012X                   Panasonic Electronic Components
+                                                                                                                                           BZ801    1             Buzzer OWMB-505020S-40-12D                         Ole Wolff Electronics Inc
