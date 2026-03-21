@@ -161,7 +161,6 @@ class TableDifferCliTest(unittest.TestCase):
             ]
             with self.assertRaisesRegex(Exception, "Key column 'key' not found in both files"):
                 run_command(command)
-    
 
 
 if __name__ == "__main__":
